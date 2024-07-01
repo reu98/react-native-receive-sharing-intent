@@ -5,6 +5,6 @@ declare class ReceiveSharingIntentModule implements IReceiveSharingIntent {
     private isClear;
     getReceivedFiles(handler: Function, errorHandler: Function, protocol?: string): void;
     clearReceivedFiles(): void;
-    protected getFileNames(handler: Function, errorHandler: Function, url: string): void;
+    getFileNames(handler: Function, errorHandler: Function, url: string): void;
 }
 export default ReceiveSharingIntentModule;

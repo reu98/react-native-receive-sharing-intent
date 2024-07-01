@@ -52,10 +52,12 @@ class ReceiveSharingIntent: NSObject {
                             return SharedMediaFile.init(path: path, thumbnail: nil, duration: $0.duration, type: $0.type)
                         }
                         
+                        
                         return SharedMediaFile.init(path: path, thumbnail: nil, duration: $0.duration, type: $0.type)
                     }
                     latestMedia = sharedMediaFiles
                     let json = toJson(data: latestMedia);
+                    userDefaults?.removeObject(forKey: key)
                     return json;
                 }
             } else if url.fragment == "file" {
@@ -70,6 +72,7 @@ class ReceiveSharingIntent: NSObject {
                     }
                     latestMedia = sharedMediaFiles
                      let json = toJson(data: latestMedia);
+                    userDefaults?.removeObject(forKey: key)
                     return json;
                 }
             } else if url.fragment == "text" {
@@ -82,6 +85,8 @@ class ReceiveSharingIntent: NSObject {
                         let text = "text:" + unwrapped;
                         return text;
                     }
+                    
+                    userDefaults?.removeObject(forKey: key)
                     return latestText!;
                     
                 }
